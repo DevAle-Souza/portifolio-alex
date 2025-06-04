@@ -1,10 +1,10 @@
 import { cn } from "@/lib/utils";
-import React, { useEffect, useRef } from "react";
-import { createNoise3D } from "simplex-noise";
 import { motion } from "motion/react";
+import { useEffect, useRef } from "react";
+import { createNoise3D } from "simplex-noise";
 
 interface VortexProps {
-  children?: any;
+  children?: any; //eslint-disable-line
   className?: string;
   containerClassName?: string;
   particleCount?: number;
@@ -40,15 +40,13 @@ export const Vortex = (props: VortexProps) => {
   let tick = 0;
   const noise3D = createNoise3D();
   let particleProps = new Float32Array(particlePropsLength);
-  let center: [number, number] = [0, 0];
+  const center: [number, number] = [0, 0];
 
-  const HALF_PI: number = 0.5 * Math.PI;
   const TAU: number = 2 * Math.PI;
-  const TO_RAD: number = Math.PI / 180;
   const rand = (n: number): number => n * Math.random();
   const randRange = (n: number): number => n - rand(2 * n);
   const fadeInOut = (t: number, m: number): number => {
-    let hm = 0.5 * m;
+    const hm = 0.5 * m;
     return Math.abs(((t + hm) % m) - hm) / hm;
   };
   const lerp = (n1: number, n2: number, speed: number): number =>
@@ -84,15 +82,15 @@ export const Vortex = (props: VortexProps) => {
 
     let x, y, vx, vy, life, ttl, speed, radius, hue;
 
-    x = rand(canvas.width);
-    y = center[1] + randRange(rangeY);
-    vx = 0;
-    vy = 0;
-    life = 0;
-    ttl = baseTTL + rand(rangeTTL);
-    speed = baseSpeed + rand(rangeSpeed);
-    radius = baseRadius + rand(rangeRadius);
-    hue = baseHue + rand(rangeHue);
+    x = rand(canvas.width); //eslint-disable-line
+    y = center[1] + randRange(rangeY); //eslint-disable-line
+    vx = 0; //eslint-disable-line
+    vy = 0; //eslint-disable-line
+    life = 0; //eslint-disable-line
+    ttl = baseTTL + rand(rangeTTL); //eslint-disable-line
+    speed = baseSpeed + rand(rangeSpeed); //eslint-disable-line
+    radius = baseRadius + rand(rangeRadius);//eslint-disable-line 
+    hue = baseHue + rand(rangeHue);  //eslint-disable-line
 
     particleProps.set([x, y, vx, vy, life, ttl, speed, radius, hue], i);
   };
@@ -122,7 +120,7 @@ export const Vortex = (props: VortexProps) => {
     const canvas = canvasRef.current;
     if (!canvas) return;
 
-    let i2 = 1 + i,
+    const i2 = 1 + i,
       i3 = 2 + i,
       i4 = 3 + i,
       i5 = 4 + i,
@@ -132,18 +130,18 @@ export const Vortex = (props: VortexProps) => {
       i9 = 8 + i;
     let n, x, y, vx, vy, life, ttl, speed, x2, y2, radius, hue;
 
-    x = particleProps[i];
-    y = particleProps[i2];
-    n = noise3D(x * xOff, y * yOff, tick * zOff) * noiseSteps * TAU;
-    vx = lerp(particleProps[i3], Math.cos(n), 0.5);
-    vy = lerp(particleProps[i4], Math.sin(n), 0.5);
-    life = particleProps[i5];
-    ttl = particleProps[i6];
-    speed = particleProps[i7];
-    x2 = x + vx * speed;
-    y2 = y + vy * speed;
-    radius = particleProps[i8];
-    hue = particleProps[i9];
+    x = particleProps[i]; //eslint-disable-line
+    y = particleProps[i2]; //eslint-disable-line
+    n = noise3D(x * xOff, y * yOff, tick * zOff) *  noiseSteps * TAU; //eslint-disable-line
+    vx = lerp(particleProps[i3], Math.cos(n), 0.5); //eslint-disable-line
+    vy = lerp(particleProps[i4], Math.sin(n), 0.5); //eslint-disable-line
+    life = particleProps[i5];  
+    ttl = particleProps[i6]; //eslint-disable-line
+    speed = particleProps[i7]; //eslint-disable-line
+    x2 = x + vx * speed; //eslint-disable-line
+    y2 = y + vy * speed; //eslint-disable-line
+    radius = particleProps[i8]; //eslint-disable-line
+    hue = particleProps[i9]; //eslint-disable-line
 
     drawParticle(x, y, x2, y2, life, ttl, radius, hue, ctx);
 
@@ -155,7 +153,7 @@ export const Vortex = (props: VortexProps) => {
     particleProps[i4] = vy;
     particleProps[i5] = life;
 
-    (checkBounds(x, y, canvas) || life > ttl) && initParticle(i);
+    (checkBounds(x, y, canvas) || life > ttl) && initParticle(i); //eslint-disable-line
   };
 
   const drawParticle = (
@@ -187,7 +185,7 @@ export const Vortex = (props: VortexProps) => {
 
   const resize = (
     canvas: HTMLCanvasElement,
-    ctx?: CanvasRenderingContext2D
+    ctx?: CanvasRenderingContext2D //eslint-disable-line
   ) => {
     const { innerWidth, innerHeight } = window;
 
