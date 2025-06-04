@@ -6,6 +6,9 @@ import { InfiniteMovingCards } from "@/components/ui/infinite-moving-cards";
 import { TextGenerateEffect } from "@/components/ui/text-generate-effect";
 import { VortexWithStars } from "@/components/ui/VortexWithStars";
 import { Download } from "lucide-react";
+import Image from "next/image";
+import GrupoPraxis from '../../public/grupo-praxis.png';
+import ProfessorMarcio from '../../public/professor-marcio.png';
 
 const words = [
   { word: "Building" },
@@ -75,7 +78,7 @@ export default function Home() {
       <div className="h-[100vh] overflow-hidden bg-black">
         <VortexWithStars>
           <div className="flex h-full text-xl text-slate-200 items-center justify-center text-center max-w-[55%] m-auto">
-            <p>Congratulations, you've made it to my portfolio! 🚀</p>
+            <p>Congratulations, you've made it to my portfolio! 🚀</p> 
           </div>
 
           <div className="flex h-full items-center justify-center text-center max-w-[55%] m-auto">
@@ -90,13 +93,17 @@ export default function Home() {
           </div>
 
           <div className="mt-5 flex h-full text-xl text-white items-center justify-center text-center max-w-[65%] m-auto font-medium">
-            <button className="relative inline-flex h-12 overflow-hidden rounded-md p-[1px] focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50">
+            <a
+              href="/cv/carlos-alexandre-cv.pdf"
+              download="carlos-alexandre-cv.pdf"
+              className="relative inline-flex h-12 overflow-hidden rounded-md p-[1px] focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50"
+            >
               <span className="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#E2CBFF_0%,#393BB2_50%,#E2CBFF_100%)]" />
               <span className="inline-flex gap-2 h-full w-full cursor-pointer items-center justify-center rounded-md bg-slate-950 px-3 py-1 text-sm font-medium text-white backdrop-blur-3xl">
                 <Download className="h-5 w-5" />
                 <p>DOWNLOAD PDF CV</p>
               </span>
-            </button>
+            </a>
           </div>
         </VortexWithStars>
       </div>
@@ -149,69 +156,40 @@ export default function Home() {
 
       <section className="bg-black py-12">
         <h2 className="text-white text-center text-4xl font-bold">My Projects</h2>
-        <div className="h-[40rem] w-full flex items-center justify-center ">
+        <div className="h-[40rem] gap-10 w-full flex items-center justify-center ">
       <PinContainer
-        title="/ui.aceternity.com"
-        href="https://twitter.com/mannupaaji"
+        title="/www.praxisuft.com.br"
+        href="https://www.praxisuft.com.br/"
       >
-        <div className="flex basis-full flex-col p-4 tracking-tight text-slate-100/50 sm:basis-1/2 w-[20rem] h-[20rem] ">
+        <div className="flex basis-full flex-col p-4 tracking-tight text-slate-100/50 sm:basis-1/2 w-[23rem] h-[25rem] ">
           <h3 className="max-w-xs !pb-2 !m-0 font-bold  text-base text-slate-100">
-            Aceternity UI
+            Grupo Práxis
           </h3>
           <div className="text-base !m-0 !p-0 font-normal">
             <span className="text-slate-500 ">
-              Customizable Tailwind CSS and Framer Motion Components.
+              Project made for a group of professors from the Federal College of Tocantins to publish about education.
+              Project was carried out using React JS with Typescript, zod validations and react hooks, uses Next.js and design libraries, backend was made with supabase.
             </span>
           </div>
-          <div className="flex flex-1 w-full rounded-lg mt-4 bg-gradient-to-br from-violet-500 via-purple-500 to-blue-500" />
+          <Image className="flex flex-1 w-full rounded-lg mt-4" alt="Grupo Praxis" src={GrupoPraxis} width={340} height={340} />
         </div>
       </PinContainer>
+      
       <PinContainer
-        title="/ui.aceternity.com"
-        href="https://twitter.com/mannupaaji"
+        title="/marciocarvalhoprofessor.com"
+        href="https://marciocarvalhoprofessor.com/"
       >
-        <div className="flex basis-full flex-col p-4 tracking-tight text-slate-100/50 sm:basis-1/2 w-[20rem] h-[20rem] ">
+        <div className="flex basis-full flex-col p-4 tracking-tight text-slate-100/50 sm:basis-1/2 w-[23rem] h-[25rem] ">
           <h3 className="max-w-xs !pb-2 !m-0 font-bold  text-base text-slate-100">
-            Aceternity UI
+            Professor Marcio Carvalho
           </h3>
           <div className="text-base !m-0 !p-0 font-normal">
             <span className="text-slate-500 ">
-              Customizable Tailwind CSS and Framer Motion Components.
+              Project for a federal professor, on the website the professor publishes news, his books, his calendar, among others.
+              Project was carried out using React JS with Typescript, zod validations and react hooks, uses Vite and design libraries, backend was made with supabase.
             </span>
           </div>
-          <div className="flex flex-1 w-full rounded-lg mt-4 bg-gradient-to-br from-violet-500 via-purple-500 to-blue-500" />
-        </div>
-      </PinContainer>
-      <PinContainer
-        title="/ui.aceternity.com"
-        href="https://twitter.com/mannupaaji"
-      >
-        <div className="flex basis-full flex-col p-4 tracking-tight text-slate-100/50 sm:basis-1/2 w-[20rem] h-[20rem] ">
-          <h3 className="max-w-xs !pb-2 !m-0 font-bold  text-base text-slate-100">
-            Aceternity UI
-          </h3>
-          <div className="text-base !m-0 !p-0 font-normal">
-            <span className="text-slate-500 ">
-              Customizable Tailwind CSS and Framer Motion Components.
-            </span>
-          </div>
-          <div className="flex flex-1 w-full rounded-lg mt-4 bg-gradient-to-br from-violet-500 via-purple-500 to-blue-500" />
-        </div>
-      </PinContainer>
-      <PinContainer
-        title="/ui.aceternity.com"
-        href="https://twitter.com/mannupaaji"
-      >
-        <div className="flex basis-full flex-col p-4 tracking-tight text-slate-100/50 sm:basis-1/2 w-[20rem] h-[20rem] ">
-          <h3 className="max-w-xs !pb-2 !m-0 font-bold  text-base text-slate-100">
-            Aceternity UI
-          </h3>
-          <div className="text-base !m-0 !p-0 font-normal">
-            <span className="text-slate-500 ">
-              Customizable Tailwind CSS and Framer Motion Components.
-            </span>
-          </div>
-          <div className="flex flex-1 w-full rounded-lg mt-4 bg-gradient-to-br from-violet-500 via-purple-500 to-blue-500" />
+          <Image className="flex flex-1 w-full rounded-lg mt-4" alt="Grupo Praxis" src={ProfessorMarcio} width={340} height={340} />
         </div>
       </PinContainer>
     </div>

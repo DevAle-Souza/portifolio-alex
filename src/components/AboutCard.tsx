@@ -1,3 +1,5 @@
+"use client";
+
 import { Meteors } from "./ui/meteors";
 
 interface MeteorsContainerProps {
@@ -7,10 +9,7 @@ interface MeteorsContainerProps {
 export function MeteorsContainer({ children }: MeteorsContainerProps) {
   return (
     <div className="relative w-full max-w-xl">
-      <div className="absolute inset-0 h-full w-full scale-[0.80] transform rounded-full bg-gradient-to-r from-blue-500 to-teal-500 blur-3xl" />
-
-      <div className="relative flex h-full flex-col items-start justify-end overflow-hidden rounded-2xl border border-gray-800 bg-gray-900 px-4 py-8 text-white shadow-xl">
-
+      <div className="relative flex h-full flex-col items-start justify-end overflow-hidden rounded-2xl border border-gray-800 bg-gray-900 px-4 py-8 text-white shadow-md">
         <div className="mb-4 flex h-5 w-5 items-center justify-center rounded-full border border-gray-500">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -27,10 +26,8 @@ export function MeteorsContainer({ children }: MeteorsContainerProps) {
             />
           </svg>
         </div>
-
         {children}
-
-        <Meteors number={20} />
+        <Meteors number={5} /> 
       </div>
     </div>
   );

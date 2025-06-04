@@ -58,33 +58,33 @@ export const VortexWithStars: React.FC<VortexWithStarsProps> = ({
   className,
   containerClassName,
   // Vortex props
-  particleCount = 700,
+  particleCount = 200, // Reduced from 400 to 200
   rangeY = 100,
   baseHue = 220,
   baseSpeed = 0.0,
-  rangeSpeed = 1.5,
+  rangeSpeed = 1.0, // Slightly reduced from 1.2
   baseRadius = 1,
-  rangeRadius = 2,
-  backgroundColor = "#000000",  // eslint-disable-line
+  rangeRadius = 1.5, // Reduced from 2
+  backgroundColor = "#000000", // eslint-disable-line
   // StarsBackground props
-  starDensity = 0.00015,
+  starDensity = 0.00005, // Reduced from 0.00010
   allStarsTwinkle = true,
-  twinkleProbability = 0.7,
+  twinkleProbability = 0.5,
   minTwinkleSpeed = 0.5,
   maxTwinkleSpeed = 1,
   // ShootingStars props
-  minSpeed = 10,
-  maxSpeed = 30,
-  minDelay = 1200,
-  maxDelay = 4200,
+  minSpeed = 8,
+  maxSpeed = 12, // Reduced from 15
+  minDelay = 2000, // Increased from 1200
+  maxDelay = 6000, // Increased from 4200
   starColor = "#9E00FF",
   trailColor = "#2EB9DF",
-  starWidth = 10,
+  starWidth = 8, // Reduced from 10
   starHeight = 1,
 }) => {
-  const canvasRef = useRef<HTMLCanvasElement>(null); // For Vortex
-  const starsCanvasRef = useRef<HTMLCanvasElement>(null); // For StarsBackground
-  const svgRef = useRef<SVGSVGElement>(null); // For ShootingStars
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+  const starsCanvasRef = useRef<HTMLCanvasElement>(null);
+  const svgRef = useRef<SVGSVGElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const [stars, setStars] = useState<StarProps[]>([]);
   const [shootingStar, setShootingStar] = useState<ShootingStar | null>(null);
@@ -163,7 +163,7 @@ export const VortexWithStars: React.FC<VortexWithStarsProps> = ({
     if (canvas && container) {
       const ctx = canvas.getContext("2d");
       if (ctx) {
-        resizeVortex(canvas, ctx);
+        resizeVortex(canvas);
         initParticles();
         drawVortex(canvas, ctx);
       }
@@ -197,7 +197,7 @@ export const VortexWithStars: React.FC<VortexWithStarsProps> = ({
 
   const drawVortex = (canvas: HTMLCanvasElement, ctx: CanvasRenderingContext2D) => {
     tick++;
-    ctx.clearRect(0, 0, canvas.width, canvas.height); // Clear canvas, no background fill
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
     drawParticles(ctx);
     renderGlow(canvas, ctx);
     renderToScreen(canvas, ctx);
@@ -245,7 +245,7 @@ export const VortexWithStars: React.FC<VortexWithStarsProps> = ({
     particleProps[i4] = vy;
     particleProps[i5] = life;
 
-    (checkBounds(x, y, canvas) || life > ttl) && initParticle(i);  // eslint-disable-line
+    (checkBounds(x, y, canvas) || life > ttl) && initParticle(i); // eslint-disable-line
   };
 
   const drawParticle = (
@@ -277,7 +277,7 @@ export const VortexWithStars: React.FC<VortexWithStarsProps> = ({
 
   const resizeVortex = (
     canvas: HTMLCanvasElement,
-    ctx?: CanvasRenderingContext2D  // eslint-disable-line
+    // ctx?: CanvasRenderingContext2D
   ) => {
     const { innerWidth, innerHeight } = window;
     canvas.width = innerWidth;
@@ -291,13 +291,7 @@ export const VortexWithStars: React.FC<VortexWithStarsProps> = ({
     ctx: CanvasRenderingContext2D
   ) => {
     ctx.save();
-    ctx.filter = "blur(8px) brightness(200%)";
-    ctx.globalCompositeOperation = "lighter";
-    ctx.drawImage(canvas, 0, 0);
-    ctx.restore();
-
-    ctx.save();
-    ctx.filter = "blur(4px) brightness(200%)";
+    ctx.filter = "blur(6px) brightness(150%)"; // Reduced blur and brightness
     ctx.globalCompositeOperation = "lighter";
     ctx.drawImage(canvas, 0, 0);
     ctx.restore();
@@ -441,19 +435,17 @@ export const VortexWithStars: React.FC<VortexWithStarsProps> = ({
       const canvas = canvasRef.current;
       const ctx = canvas?.getContext("2d");
       if (canvas && ctx) {
-        resizeVortex(canvas, ctx);
+        resizeVortex(canvas);
       }
     });
   }, []);
 
   return (
     <div className={cn("relative h-full w-full pt-72", containerClassName)}>
-      {/* StarsBackground canvas (base layer) */}
       <canvas
         ref={starsCanvasRef}
         className={cn("h-full w-full absolute inset-0 z-0")}
       />
-      {/* Vortex canvas (middle layer) */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -462,7 +454,6 @@ export const VortexWithStars: React.FC<VortexWithStarsProps> = ({
       >
         <canvas ref={canvasRef} className="h-full w-full" />
       </motion.div>
-      {/* ShootingStars SVG (top layer) */}
       <svg ref={svgRef} className={cn("w-full h-full absolute inset-0 z-20")}>
         {shootingStar && (
           <rect
@@ -487,7 +478,6 @@ export const VortexWithStars: React.FC<VortexWithStarsProps> = ({
           </linearGradient>
         </defs>
       </svg>
-      {/* Content */}
       <div className={cn("relative z-30", className)}>{children}</div>
     </div>
   );

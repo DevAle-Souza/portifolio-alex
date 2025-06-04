@@ -34,6 +34,8 @@ export default function RootLayout({
       >
         {children}
       </body>
+
+      <footer className="bg-[#323a56] h-14 text-white font-bold text-md items-center flex justify-center text-center">Copyright ©2025 Alexandre. Designed by Dev Alexandre</footer>
     </html>
   );
 }
