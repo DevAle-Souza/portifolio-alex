@@ -2,10 +2,11 @@
 
 import { MeteorsContainer } from "@/components/AboutCard";
 import { PinContainer } from "@/components/ui/3d-pin";
+import { Button } from "@/components/ui/button";
 import { InfiniteMovingCards } from "@/components/ui/infinite-moving-cards";
 import { TextGenerateEffect } from "@/components/ui/text-generate-effect";
 import { VortexWithStars } from "@/components/ui/VortexWithStars";
-import { Download } from "lucide-react";
+import { Download, Github, Instagram, MessageCircleMore } from "lucide-react";
 import Image from "next/image";
 import GrupoPraxis from '../../public/grupo-praxis.png';
 import ProfessorMarcio from '../../public/professor-marcio.png';
@@ -194,6 +195,23 @@ export default function Home() {
       </PinContainer>
     </div>
       </section>
+      <footer className="bg-[#323a56]">
+        <div className="flex m-auto h-14 text-white font-bold text-md items-center justify-around text-center">
+          <p>Copyright ©2025 Alexandre. Designed by Dev Alexandre</p>
+          <div className="flex items-center justify-center gap-4">
+          <a href="https://github.com/DevAle-Souza" target="_blank">
+            <Button className="p-3 cursor-pointer flex items-center justify-center"><Github className="h-4 w-4"/></Button>
+          </a>
+          <a href="https://www.instagram.com/ale11br/" target="_blank">
+            <Button className="p-3 cursor-pointer flex items-center justify-center"><Instagram className="h-4 w-4"/></Button>
+          </a>
+          <a href="https://wa.me/62996147011
+" target="_blank">
+            <Button className="p-3 cursor-pointer flex items-center justify-center"><MessageCircleMore className="h-4 w-4"/></Button>
+          </a>
+          </div>
+        </div>
+      </footer>
     </main>
   );
 }
