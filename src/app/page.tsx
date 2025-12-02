@@ -17,7 +17,7 @@ const words = [
   { word: "Fast," },
   { word: "and" },
   { word: "Beautiful" },
-  { word: "Web", color: "#6366F1" },
+  { word: "Applications", color: "#6366F1" },
   { word: "Experiences", color: "#6366F1" },
 ];
 
@@ -88,7 +88,7 @@ export default function Home() {
           <div className="flex h-full text-md sm:text-xl text-white items-center justify-center text-center max-w-[90%] sm:max-w-[65%] m-auto font-medium">
             <h4>
               Hi! I’m Carlos Alexandre, a Full Stack Developer focused on building
-              modern, responsive, and high-performance web applications.
+              modern, responsive, and high-performance applications.
             </h4>
           </div>
 
