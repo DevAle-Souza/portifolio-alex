@@ -87,7 +87,7 @@ export default function Home() {
 
           <div className="flex h-full text-md sm:text-xl text-white items-center justify-center text-center max-w-[90%] sm:max-w-[65%] m-auto font-medium">
             <h4>
-              Hi! I’m Carlos Alexandre, a Front-End Developer focused on building
+              Hi! I’m Carlos Alexandre, a Full Stack Developer focused on building
               modern, responsive, and high-performance web applications.
             </h4>
           </div>
