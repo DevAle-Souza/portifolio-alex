@@ -113,7 +113,7 @@ export default function Home() {
           <MeteorsContainer>
             <h4 className="text-lg sm:text-xl font-bold pb-1">From Gamer to Developer</h4>
             <p className="text-sm sm:text-base text-justify">
-              “I’m a 22-year-old Front-End Developer from Goiás, Brazil. My
+              “I’m a 23-year-old FullStack Developer from Goiás, Brazil. My
               passion for technology started in my childhood, driven by my love
               for games. That curiosity led me to discover how games are made —
               and that’s when I found programming.”
