@@ -1,7 +1,12 @@
 "use client";
 import { cn } from "@/lib/utils";
 import { motion } from "motion/react";
-import React from "react";
+import React, { useEffect, useState } from "react";
+
+type MeteorStyle = {
+  delay: number;
+  duration: number;
+};
 
 export const Meteors = ({
   number,
@@ -10,15 +15,25 @@ export const Meteors = ({
   number?: number;
   className?: string;
 }) => {
-  const meteors = new Array(number || 20).fill(true);
+  const meteorCount = number || 20;
+  const [meteors, setMeteors] = useState<MeteorStyle[]>([]);
+
+  useEffect(() => {
+    setMeteors(
+      Array.from({ length: meteorCount }, () => ({
+        delay: Math.random() * 5,
+        duration: Math.floor(Math.random() * (10 - 5) + 5),
+      }))
+    );
+  }, [meteorCount]);
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
     >
-      {meteors.map((el, idx) => {
-        const meteorCount = number || 20;
+      {meteors.map((meteor, idx) => {
         // Calculate position to evenly distribute meteors across container width
         const position = idx * (800 / meteorCount) - 400; // Spread across 800px range, centered
 
@@ -33,8 +48,8 @@ export const Meteors = ({
             style={{
               top: "-40px", // Start above the container
               left: position + "px",
-              animationDelay: Math.random() * 5 + "s", // Random delay between 0-5s
-              animationDuration: Math.floor(Math.random() * (10 - 5) + 5) + "s", // Keep some randomness in duration
+              animationDelay: meteor.delay + "s",
+              animationDuration: meteor.duration + "s",
             }}
           ></span>
         );
